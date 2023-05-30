@@ -10,12 +10,26 @@ import {
 } from '@mui/material';
 
 export default function DecimalToBinary() {
-  const [decimal, setDecimal] = useState('');
+  let [decimal, setDecimal] = useState();
   const [initialized, setInitialized] = useState(false);
 
   function calculateBinary() {
     //TODO:
-    return;
+    let n = 0;
+
+    while(decimal != 0) {
+      if (2**n > decimal) {
+        decimal -= 2**(n-1)
+        if(!initialized) {
+          let binArr = new Array(n).fill(0);
+        }
+        
+      }
+
+      n += 1;
+    }
+
+    return null;
   }
 
   return (
@@ -34,7 +48,7 @@ export default function DecimalToBinary() {
         <FormGroup>
           <OutlinedInput
             id="outlined-adornment-decimal"
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
+            endAdornment={<InputAdornment position="end"></InputAdornment>}
             aria-describedby="outlined-decimal-helper-text"
             value={decimal}
             onChange={(e) => setDecimal(e.target.value)}
