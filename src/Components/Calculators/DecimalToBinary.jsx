@@ -13,24 +13,29 @@ export default function DecimalToBinary() {
   let [decimal, setDecimal] = useState();
   const [initialized, setInitialized] = useState(false);
 
-  function calculateBinary() {
-    //TODO:
+  function calculateBinary(decimal) {
+    // let decimal = 169;
+    let initialized = false;
+    let binArr;
     let n = 0;
 
-    while(decimal != 0) {
-      if (2**n > decimal) {
-        decimal -= 2**(n-1)
-        if(!initialized) {
-          let binArr = new Array(n).fill(0);
+    while (decimal != 0) {
+        if (2 ** n > decimal) {
+            decimal -= 2 ** (n - 1)
+            if (!initialized) {
+                binArr = new Array(n).fill("0");
+                binArr[n-1] = "1";
+                initialized = true;
+            } else {
+                binArr[n-1] = "1";
+            }
+            n = 0
+        } else {
+            n += 1;
         }
-        
-      }
-
-      n += 1;
     }
-
-    return null;
-  }
+    return binArr.reverse().join('');
+}
 
   return (
     <>
